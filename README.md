@@ -51,12 +51,13 @@ Pod::Spec.new do |s|
 ```
 Step 2:
 Modify Podfile
-
+```
 /* Add this line above */
 pod 'ffmpeg-kit-ios-full-gpl', :podspec => './ffmpeg-kit-ios-full-gpl.podspec'
 
 /* Already exists in the pod file -- Don't change anything */
 pod 'ffmpeg-kit-react-native', :subspecs => ['full-gpl'], :podspec => '../node_modules/ffmpeg-kit-react-native/ffmpeg-kit-react-native.podspec'
+```
 Step 3:
 Run the following commands
 
