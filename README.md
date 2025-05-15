@@ -82,11 +82,11 @@ Run the project for IOS and the pod structure will look like below
 🤖 Fixes for Android
 I have uploaded ffmpeg-kit-full-gpl.aarto my GitHub repo:
 
-https://github.com/NooruddinLakhani/ffmpeg-kit-full-gpl/releases/download/v1.0.0/ffmpeg-kit-full-gpl.aar
+[https://github.com/NooruddinLakhani/ffmpeg-kit-full-gpl/releases/download/v1.0.0/ffmpeg-kit-full-gpl.aar](https://github.com/hoanganhken97/ffmpeg-kit-full-gpl.git)
 
 Step 1:
 Modify android/app/build.gradle
-
+```
 import java.net.URL // Add this line on top of the file
 
 android {
@@ -135,9 +135,10 @@ afterEvaluate {
     // Make sure the AAR is downloaded before compilation begins
     preBuild.dependsOn("downloadAar")
 }
+```
 Step 2:
 Modify android/build.gradle
-
+```
 buildscript {
     ext {
         .....
@@ -165,16 +166,18 @@ allprojects {
 }
 
 apply plugin: "com.facebook.react.rootproject"
+```
 Step 3:
 Modify package.json and add the following script to download the file from the cloud after executing yarn install or npn install
-
+```
 "scripts": {
     "postinstall": "cd android && ./gradlew :app:downloadAar"
   }
+```
 Step 4:
 Modify ffmpeg-kit-react-native package’s android/build.gradle then update the dependency and make a patch
 
-
+```
 android {
   ....
 
@@ -194,6 +197,7 @@ dependencies {
   /* Add this line */
   implementation(name: 'ffmpeg-kit-full-gpl', ext: 'aar')
 }
+```
 Try to run the project for Android, after executing “yarn install” It will download the “.aar” file from the cloud and add to the following path
 
 “android/libs/ffmpeg-kit-full-gpl.aar”
@@ -203,3 +207,4 @@ After applying these changes:
 
 ✅ iOS: Should compile without CocoaPods errors.
 ✅ Android: Should fetch .aar files successfully.
+Clone: https://medium.com/@nooruddinlakhani/resolved-ffmpegkit-retirement-issue-in-react-native-a-complete-guide-0f54b113b390 
